@@ -1,0 +1,27 @@
+.broco-console {
+    color: #99A4B4;
+    background-color: #334868;
+
+    font-family: monospace;
+    min-height: 10em;
+    position: relative;
+}
+
+.broco-entry-command {
+    border-top: 1px solid #8591A4;
+    background-color: #475A77;
+
+    padding: 5px;
+}
+
+.broco-prompt {
+    background-color: #1F2B3E;
+
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    margin-right: 5px;
+}
+.broco-prompt-text {
+    padding: 5px;
+}
