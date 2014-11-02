@@ -25,3 +25,9 @@
 .broco-prompt-text {
     padding: 5px;
 }
+
+.broco-hidden-element {
+    position: absolute;
+    top: 0px;
+    left: -10000px;
+}
