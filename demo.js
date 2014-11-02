@@ -6,6 +6,8 @@ require.config({
 
 define(['broco/console', 'broco/ui/core'], function(BrocoConsole, BrocoUI) {
     var console = new BrocoConsole();
-    ui = new BrocoUI('#console', console);
-    ui.process('motd');
+    var ui = new BrocoUI('#console', console);
+    console.depend('broco/modules/', ['motd'], function() {
+        ui.process('motd');
+    });
 });
