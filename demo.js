@@ -4,6 +4,8 @@ require.config({
     }
 });
 
-define(['broco/ui/core'], function(ui) {
-    broco = new ui('#console');
+define(['broco/console', 'broco/ui/core'], function(BrocoConsole, BrocoUI) {
+    var console = new BrocoConsole();
+    ui = new BrocoUI('#console', console);
+    ui.process('motd');
 });
