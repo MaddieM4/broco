@@ -3,11 +3,13 @@ define([], function() {
     var CODES = {
         'BACKSPACE'  : 8,
         'SPACE'      : 32,
+        'ENTER'      : 13,
     }
     var EVENTS = ["keyup", "keydown", "keypress", "input"];
 
-    function StringTracker(initial_value, callback) {
-        this.callback = callback;
+    function StringTracker(initial_value, on_change, on_submit) {
+        this.on_change = on_change;
+        this.on_submit = on_submit;
         this.element = this._setup_element(initial_value);
         this.focus();
     }
@@ -23,6 +25,9 @@ define([], function() {
         return element;
     }
 
+    StringTracker.prototype.clear = function() {
+        this.element.value = '';
+    }
     StringTracker.prototype.focus = function() {
         this.element.focus();
     }
@@ -40,8 +45,12 @@ define([], function() {
         this.focus();
         return this.element.selectionStart;
     }
-    StringTracker.prototype.on_update = function() {
-        this.callback(this);
+    StringTracker.prototype.on_update = function(e) {
+        this.on_change(this);
+        e = e || event;
+        if (e.keyCode == CODES.ENTER) {
+            this.on_submit(this);
+        }
     }
 
     return StringTracker;
