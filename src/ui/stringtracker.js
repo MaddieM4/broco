@@ -7,15 +7,15 @@ define([], function() {
     }
     var EVENTS = ["keyup", "keydown", "keypress", "input"];
 
-    function StringTracker(initial_value, on_change, on_submit) {
+    function StringTracker(initial_value, on_change, on_submit, anchor_to) {
         this.on_change = on_change;
         this.on_submit = on_submit;
-        this.element = this._setup_element(initial_value);
+        this.element = this._setup_element(initial_value, anchor_to);
         this.focus();
     }
-    StringTracker.prototype._setup_element = function(value) {
+    StringTracker.prototype._setup_element = function(value, anchor_to) {
         var element = document.createElement('input');
-        document.querySelector('body').appendChild(element);
+        anchor_to.appendChild(element);
         element.classList.add('broco-hidden-element');
         element.value = value;
         for (var i = 0; i < EVENTS.length; i++) {

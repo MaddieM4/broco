@@ -3,8 +3,9 @@
     background-color: #334868;
 
     font-family: monospace;
-    min-height: 10em;
+    height: 20em;
     position: relative;
+    overflow-y: scroll;
 }
 
 .broco-entry-command {
@@ -19,11 +20,7 @@
 
 .broco-prompt {
     background-color: #1F2B3E;
-
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    margin-right: 5px;
+    position: relative;
 }
 .broco-prompt-text {
     padding: 5px;

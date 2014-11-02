@@ -49,6 +49,7 @@ define(['broco/ui/util', 'broco/ui/prompt'], function(util, BrocoPrompt) {
     BrocoUI.prototype.on_submit = function(st) {
         var value = st.get_value();
         st.clear();
+        this.element.scrollTop = this.element.scrollHeight;
         if (value != '') {
             this.process(value);
         }

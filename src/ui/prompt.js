@@ -11,7 +11,7 @@ define(['broco/ui/util', 'broco/ui/stringtracker'], function(util, StringTracker
         this.element.appendChild(contained);
 
         this.prompt_string = '$> ';
-        this.tracker = new StringTracker('', this.on_change.bind(this), on_submit);
+        this.tracker = new StringTracker('', this.on_change.bind(this), on_submit, this.element);
         this.element.addEventListener("click", this.tracker.focus.bind(this.tracker));
 
         this.reset_blink_timer();
