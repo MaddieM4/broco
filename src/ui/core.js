@@ -9,8 +9,6 @@ define(['broco/ui/util', 'broco/ui/prompt'], function(util, BrocoPrompt) {
 
         this.prompt = new BrocoPrompt(this.on_submit.bind(this));
         this.element.appendChild(this.prompt.element);
-
-        this.append(this.domCommand("demo command"));
     }
     BrocoUI.prototype.domCommand = function(command_string) {
         var div = util.newClassDiv('broco-entry-command');
@@ -26,7 +24,7 @@ define(['broco/ui/util', 'broco/ui/prompt'], function(util, BrocoPrompt) {
         var value = st.get_value();
         st.clear();
         if (value != '') {
-            this.append(this.domCommand(value));
+            this.append(this.domCommand(this.prompt.prompt_string + value));
         }
     }
 
