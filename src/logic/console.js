@@ -4,7 +4,7 @@ define(['broco/logic/lex'], function(lex) {
     function BrocoConsole() {
         this.modules = {};
     }
-    BrocoConsole.prototype.depend = function(root, modules, callback) {
+    BrocoConsole.prototype.depend = function(root, modules, callback, on_error) {
         var self = this,
             module_names = [],
             module_locations = [];
@@ -21,7 +21,7 @@ define(['broco/logic/lex'], function(lex) {
                 self.modules[module_name] = new module_object(self);
             }
             if (callback != undefined) callback();
-        });
+        }, on_error);
     }
     BrocoConsole.prototype.process = function(value) {
         var args = lex(value);

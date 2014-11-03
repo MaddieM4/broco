@@ -1,5 +1,19 @@
 define(['broco/ui/util'], function(ui_util) {
 
+    function tack_line_on(response, text, err) {
+        var div = ui_util.newClassDiv('broco-entry-response-line');
+        if (err) {
+            div.classList.add('broco-entry-error');
+        }
+        div.appendChild(document.createTextNode(text));
+
+        if (response.element) {
+            response.element.appendChild(div);
+        } else {
+            response.lines.push(div);
+        }
+    }
+
     // Module for loading more modules
     function LoaderModule(console) {
         this.console = console;
@@ -29,13 +43,14 @@ define(['broco/ui/util'], function(ui_util) {
             'Loading...'
         ]};
         this.console.depend(root, modules, function(){
-            if (response.element) {
-                var div = ui_util.newClassDiv('broco-entry-response-line');
-                div.appendChild(document.createTextNode("All modules loaded"));
-                response.element.appendChild(div);
-            } else {
-                response.lines.push("All modules already loaded");
-            }
+            tack_line_on(response, "All modules loaded", false);
+        }, function(err) {
+            var rm = err.requireModules;
+            var errtext = "Loading failed" + (
+                (rm && rm.length) ? " on modules: " + JSON.stringify(rm)
+                                  : ''
+            );
+            tack_line_on(response, errtext, true);
         });
 
         return response;

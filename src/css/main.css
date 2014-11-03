@@ -17,6 +17,10 @@
     border-top: 1px solid #475A77;
     padding: 5px;
 }
+.broco-entry-error {
+    color: red;
+    background-color: black;
+}
 
 .broco-prompt {
     background-color: #1F2B3E;
