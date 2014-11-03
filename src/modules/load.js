@@ -1,33 +1,19 @@
 define(['broco/ui/util'], function(ui_util) {
 
-    function tack_line_on(response, text, err) {
-        var div = ui_util.newClassDiv('broco-entry-response-line');
-        if (err) {
-            div.classList.add('broco-entry-error');
-        }
-        div.appendChild(document.createTextNode(text));
-
-        if (response.element) {
-            response.element.appendChild(div);
-        } else {
-            response.lines.push(div);
-        }
-    }
-
     // Module for loading more modules
     function LoaderModule(console) {
         this.console = console;
     }
-    LoaderModule.prototype.usage = function() {
-        return { lines: [
+    LoaderModule.prototype.usage = function(response) {
+        response.print_n([
             'usage: load <root> <module>...',
             'Loads AMD modules asyncronously and exposes them as command line programs.',
             'The <root> argument allows you to import multiple submodules into the command-line top level. You can leave this blank by passing in "".',
-        ]};
+        ]);
     }
-    LoaderModule.prototype.process = function(args) {
+    LoaderModule.prototype.process = function(args, response) {
         if (args.length < 3) {
-            return this.usage();
+            return this.usage(response);
         }
         var command = args[0];
         var root    = args[1];
@@ -37,20 +23,20 @@ define(['broco/ui/util'], function(ui_util) {
             root = root + '/';
         }
 
-        var response = { lines: [
+        response.print_n([
             'root: ' + root,
             'modules: ' + JSON.stringify(modules),
             'Loading...'
-        ]};
+        ]);
         this.console.depend(root, modules, function(){
-            tack_line_on(response, "All modules loaded", false);
+            response.print("All modules loaded");
         }, function(err) {
             var rm = err.requireModules;
             var errtext = "Loading failed" + (
                 (rm && rm.length) ? " on modules: " + JSON.stringify(rm)
                                   : ''
             );
-            tack_line_on(response, errtext, true);
+            response.print(errtext, ['broco-entry-error']);
         });
 
         return response;

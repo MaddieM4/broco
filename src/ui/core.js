@@ -1,4 +1,5 @@
-define(['broco/ui/util', 'broco/ui/prompt'], function(util, BrocoPrompt) {
+define(['broco/ui/util', 'broco/ui/prompt', 'broco/ui/response'],
+function(util, BrocoPrompt, Response) {
 
     function BrocoUI(selector, console) {
         this.element = document.querySelector(selector);
@@ -18,34 +19,17 @@ define(['broco/ui/util', 'broco/ui/prompt'], function(util, BrocoPrompt) {
         div.appendChild(text);
         return div;
     }
-    BrocoUI.prototype.domResponse = function(response_object) {
-        var response_div = util.newClassDiv('broco-entry-response');
-        for (var l = 0; l < response_object.lines.length; l++) {
-            var line = response_object.lines[l];
-            var div = util.newClassDiv('broco-entry-response-line');
-            if (typeof line == "string") {
-                var text = document.createTextNode(line);
-                div.appendChild(text);
-            } else {
-                dev.appendChild(line);
-            }
-            response_div.appendChild(div);
-        }
-        response_object.element = response_div;
-        return response_div;
-    }
     BrocoUI.prototype.append = function(element) {
         this.entries.appendChild(element);
     }
     BrocoUI.prototype.appendCommand = function(value) {
         this.append(this.domCommand(value));
     }
-    BrocoUI.prototype.appendResponse = function(value) {
-        this.append(this.domResponse(value));
-    }
     BrocoUI.prototype.process = function(command) {
+        var response = new Response();
         this.appendCommand(this.prompt.prompt_string + command);
-        this.appendResponse(this.console.process(command));
+        this.console.process(command, response);
+        this.append(response.element);
     }
     BrocoUI.prototype.on_submit = function(st) {
         var value = st.get_value();

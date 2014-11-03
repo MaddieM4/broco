@@ -23,14 +23,14 @@ define(['broco/logic/lex'], function(lex) {
             if (callback != undefined) callback();
         }, on_error);
     }
-    BrocoConsole.prototype.process = function(value) {
+    BrocoConsole.prototype.process = function(value, response) {
         var args = lex(value);
         var command = args[0];
         if (this.modules[command] != undefined) {
             var mod = this.modules[command];
-            return mod.process(args);
+            mod.process(args, response);
         } else {
-            return { lines: ["No module loaded for command '" + command + "'"] };
+            response.print("No module loaded for command '" + command + "'", ['broco-entry-error']);
         }
     }
 
