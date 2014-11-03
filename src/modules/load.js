@@ -3,6 +3,7 @@ define(['broco/ui/util'], function(ui_util) {
     // Module for loading more modules
     function LoaderModule(console) {
         this.console = console;
+        this._dir = [];
     }
     LoaderModule.prototype.usage = function(response) {
         response.print_n([

@@ -1,5 +1,21 @@
 define(['broco/ui/util'], function(util) {
 
+    function replacer(key, value) {
+        if (this._dir != undefined && this._dir.indexOf(key) == -1) {
+            return undefined;
+        } else {
+            return value;
+        }
+    }
+
+    function stringify(value) {
+        if (typeof value == "string") {
+            return value;
+        } else {
+            return JSON.stringify(value, replacer, 2);
+        }
+    }
+
     function BrocoUIResponse() {
         this.element = util.newClassDiv('broco-entry-response');
     }
@@ -8,9 +24,7 @@ define(['broco/ui/util'], function(util) {
         return this;
     }
     BrocoUIResponse.prototype.print = function(value, classes) {
-        if (typeof value != "string") {
-            value = JSON.stringify(value);
-        }
+        value = stringify(value);
         var div = util.newClassDiv('broco-entry-response-line');
         var text = document.createTextNode(value);
         div.appendChild(text);

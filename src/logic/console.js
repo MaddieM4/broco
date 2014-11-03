@@ -3,6 +3,11 @@ define(['broco/logic/lex'], function(lex) {
     // Handles actual interactions with modules
     function BrocoConsole() {
         this.modules = {};
+        this.data = {
+            'modules': this.modules,
+            'prefs': {}
+        };
+        this.depend('broco/modules/', ['set', 'get']);
     }
     BrocoConsole.prototype.depend = function(root, modules, callback, on_error) {
         var self = this,
@@ -12,7 +17,6 @@ define(['broco/logic/lex'], function(lex) {
             var module_name = modules[m].replace('/', '.');
             module_names.push(module_name);
             module_locations.push( (root + module_name).replace('.','/') );
-            this.modules[module_name] = undefined;
         }
         require(module_locations, function() {
             for (var i=0; i<modules.length; i++) {
