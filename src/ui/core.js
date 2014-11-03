@@ -31,6 +31,7 @@ define(['broco/ui/util', 'broco/ui/prompt'], function(util, BrocoPrompt) {
             }
             response_div.appendChild(div);
         }
+        response_object.element = response_div;
         return response_div;
     }
     BrocoUI.prototype.append = function(element) {
