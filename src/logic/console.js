@@ -1,4 +1,4 @@
-define(['broco/lex'], function(lex) {
+define(['broco/logic/lex'], function(lex) {
 
     // Handles actual interactions with modules
     function BrocoConsole() {

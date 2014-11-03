@@ -4,7 +4,7 @@ require.config({
     }
 });
 
-define(['broco/console', 'broco/ui/core'], function(BrocoConsole, BrocoUI) {
+define(['broco/logic/console', 'broco/ui/core'], function(BrocoConsole, BrocoUI) {
     var console = new BrocoConsole();
     var ui = new BrocoUI('#console', console);
     // console.depend('broco/modules/', ['load']);
