@@ -9,9 +9,9 @@ define(['broco/lex'], function(lex) {
             module_names = [],
             module_locations = [];
         for (var m = 0; m < modules.length; m++) {
-            var module_name = modules[m].replace('.', '/');
+            var module_name = modules[m].replace('/', '.');
             module_names.push(module_name);
-            module_locations.push( root + module_name );
+            module_locations.push( (root + module_name).replace('.','/') );
             this.modules[module_name] = undefined;
         }
         require(module_locations, function() {
@@ -20,7 +20,7 @@ define(['broco/lex'], function(lex) {
                 var module_object = arguments[i];
                 self.modules[module_name] = new module_object(self);
             }
-            callback();
+            if (callback != undefined) callback();
         });
     }
     BrocoConsole.prototype.process = function(value) {
