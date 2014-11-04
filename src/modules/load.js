@@ -4,13 +4,14 @@ define(['broco/ui/util'], function(ui_util) {
     function LoaderModule(console) {
         this.console = console;
         this._dir = [];
-    }
-    LoaderModule.prototype.usage = function(response) {
-        response.print_n([
+        this._help = [
             'usage: load <root> <module>...',
             'Loads AMD modules asyncronously and exposes them as command line programs.',
-            'The <root> argument allows you to import multiple submodules into the command-line top level. You can leave this blank by passing in "".',
-        ]);
+            'The <root> argument allows you to import multiple submodules into the command-line top level. You can leave this blank by passing in "".'
+        ];
+    }
+    LoaderModule.prototype.usage = function(response) {
+        response.print_n(this._help);
     }
     LoaderModule.prototype.process = function(args, response) {
         if (args.length < 3) {

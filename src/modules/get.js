@@ -2,13 +2,14 @@ define(['broco/logic/traversal'], function(traversal) {
     function GetVariable(console) {
         this.console = console;
         this._dir = [];
-    }
-    GetVariable.prototype.usage = function(response) {
-        response.print_n([
+        this._help = [
             'usage: get this.that',
             'Returns a variable from the console data storage.',
             'Use `get .` to see all available data.'
-        ]);
+        ];
+    }
+    GetVariable.prototype.usage = function(response) {
+        response.print_n(this._help);
     }
     GetVariable.prototype.process = function(args, response) {
         if (args.length != 2) {

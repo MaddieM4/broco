@@ -4,6 +4,10 @@ define([], function() {
         this.console = console;
         this.tutorials = {};
         this._dir = ['tutorials'];
+        this._help = [
+            'usage: help <thing>',
+            "Get documentation on any module or topic. As long as there's documentation, anyways!"
+        ];
     }
     HelpModule.prototype.get_tutorial_names = function() {
         var tutorials = [];
@@ -35,10 +39,7 @@ define([], function() {
     }
     HelpModule.prototype.process = function(args, response) {
         if (args.length != 2) {
-            response.print_n([
-                'help <thing>',
-                "Get documentation on any module or topic. As long as there's documentation, anyways!",
-            ].concat(
+            response.print_n( this._help.concat(
                 this.print_list("Tutorials:", "No tutorials", this.get_tutorial_names())
             ).concat(
                 this.print_list("Modules:", "No documented modules", this.get_mods_with_docs())

@@ -2,12 +2,13 @@ define([], function() {
     function Fullscreen(console) {
         this.console = console;
         this._dir = [];
-    }
-    Fullscreen.prototype.usage = function(response) {
-        response.print_n([
+        this._help = [
             'usage: fullscreen [on|off|toggle]',
             'Controls whether console is fullscreen. If no argument is given, `toggle` is assumed as default.'
-        ]);
+        ];
+    }
+    Fullscreen.prototype.usage = function(response) {
+        response.print_n(this._help);
     }
     Fullscreen.prototype.process = function(args, response) {
         if (args.length > 2) {

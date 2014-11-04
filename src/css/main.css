@@ -9,7 +9,7 @@
 }
 
 .broco-entries {
-    white-space: pre;
+    white-space: pre-wrap;
 }
 .broco-entry-command {
     border-top: 1px solid #8591A4;

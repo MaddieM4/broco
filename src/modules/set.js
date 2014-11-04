@@ -2,13 +2,14 @@ define(['broco/logic/traversal'], function(traversal) {
     function SetVariable(console) {
         this.console = console;
         this._dir = [];
-    }
-    SetVariable.prototype.usage = function(response) {
-        response.print_n([
+        this._help = [
             'usage: set this.that = `"Some JSON Value"`',
             'Sets a variable in the console data storage.',
             'This gives you full ability to overwrite module objects. You may need to reload them afterwards if you do stupid things. The console gives you all the tools you need to break everything and fix it again, and the safety is OFF.'
-        ]);
+        ];
+    }
+    SetVariable.prototype.usage = function(response) {
+        response.print_n(this._help);
     }
     SetVariable.prototype.process = function(args, response) {
         if (args.length != 4) {
