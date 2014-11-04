@@ -1,11 +1,10 @@
-html {
+.broco-console.fullscreen {
+    position: absolute;
+    z-index: 9001;
     height: 100%;
-}
-body {
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-}
-.broco-console {
-    height: 100%;
+
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }

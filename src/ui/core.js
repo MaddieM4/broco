@@ -9,6 +9,7 @@ function(util, BrocoPrompt, Response) {
         this.element.appendChild(this.entries);
 
         this.console = console;
+        this.console.ui = this;
         this.prompt = new BrocoPrompt(this.on_submit.bind(this));
         this.element.appendChild(this.prompt.element);
     }
