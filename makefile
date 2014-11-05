@@ -11,7 +11,7 @@ _optimized: r.js
 	rm -rf optimized
 	mkdir optimized
 	cp index.html optimized
-	ln -s ../src optimized/src
+	cp -r src optimized/src
 	node r.js -o build.js
 
 r.js:
