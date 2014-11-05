@@ -28,6 +28,7 @@
 .broco-prompt {
     background-color: #1F2B3E;
     position: relative;
+    white-space: pre-wrap;
 }
 .broco-prompt-text {
     padding: 5px;

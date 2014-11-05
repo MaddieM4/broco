@@ -29,9 +29,11 @@ define([], function () {
                 }
             } else if (token == '' && is_quote(char)) {
                 current_quote = char;
-            } else if (char == ' ' && token) {
-                finished.push(token);
-                token = '';
+            } else if (char == ' ') {
+                if (token) {
+                    finished.push(token);
+                    token = '';
+                }
             } else {
                 token = token + char;
             }
