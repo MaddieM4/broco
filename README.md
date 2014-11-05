@@ -36,6 +36,12 @@ Boy, this would be a long list if we were trying to be comprehensive (which is w
  * Pipes / filtering
  * Output collapsing / ability to output multiple switcheable representations of an object
 
+## Efficiency
+
+When building an app, it makes sense to use the r.js optimizer to squish it all into a single file - and therefore, a single request. At least for everything you need on page load... optional modules are fine to trickle in later on-demand.
+
+As a demo of this, we include a makefile that builds an "optimized" version of the normal demo page. This will load quite a bit faster over bad connections, when the scripts are not already cached.
+
 ## Other notes
 
 This is not stable software. The APIs are *incredibly* liable to change - in fact, the process() API will almost certainly have to change in some way to support piping and filtering. Build on broco at your own risk. However, long-term, it's exactly those builders that we want to empower and cheer on. So if you have a cool use for this software, the author(s) are here for you.
