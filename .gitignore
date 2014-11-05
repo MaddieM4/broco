@@ -1,0 +1,6 @@
+# Vim tempfiles
+*.swp
+
+# r.js optimization
+/r.js
+/optimized

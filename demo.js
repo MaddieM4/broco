@@ -4,10 +4,9 @@ require.config({
     }
 });
 
-define(['broco/logic/console', 'broco/ui/core'], function(BrocoConsole, BrocoUI) {
+define(['broco/logic/console', 'broco/ui/core', 'vendor/domReady!'], function(BrocoConsole, BrocoUI) {
     var console = new BrocoConsole();
     var ui = new BrocoUI('#console', console);
-    // console.depend('broco/modules/', ['load']);
     console.depend('broco/modules/', ['motd','load','help'], function() {
         console.modules.help.tutorials.getting_started = [
             'You can load modules at run-time. Try this:',
