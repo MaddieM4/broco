@@ -1,0 +1,51 @@
+.broco-console {
+    color: #99A4B4;
+    background-color: #334868;
+
+    font-family: monospace;
+    height: 20em;
+    position: relative;
+    overflow-y: scroll;
+}
+.broco-console.fullscreen {
+    position: absolute;
+    z-index: 9001;
+    height: 100%;
+
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.broco-entries {
+    white-space: pre-wrap;
+}
+.broco-entry-command {
+    border-top: 1px solid #8591A4;
+    background-color: #475A77;
+    padding: 5px;
+}
+.broco-entry-response-line {
+    border-top: 1px solid #475A77;
+    padding: 5px;
+}
+.broco-entry-error {
+    color: red;
+    background-color: black;
+}
+
+.broco-prompt {
+    background-color: #1F2B3E;
+    position: relative;
+    white-space: pre-wrap;
+}
+.broco-prompt-text {
+    padding: 5px;
+}
+
+.broco-hidden-element {
+    position: absolute;
+    top: 0px;
+    left: -10000px;
+}
