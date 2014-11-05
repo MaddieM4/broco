@@ -22,7 +22,7 @@ While the downstream usefulness of broco is that you can write your own domain-s
  * get - Retrieve a variable value stored by the console. Try `get .`!
  * set - Store a variable value. For fun and profit, try changing the 'motd' message and running the motd command again.
  * motd - Message of the Day. Very basic demo module that simply spits out some static text.
- * fullscreen - Bring the console into fullscreen mode, rather than being locked to an arbitrary height. Requires fullscreen.css.
+ * fullscreen - Bring the console into fullscreen mode, rather than being locked to an arbitrary height.
  * help - Get documentation on stuff. You really should provide documentation on your custom modules: `help foo` is the idiomatic equivalent of `man foo` or `foo -h`.
  * load - Load more modules. API is a bit analogous to console.depend(). You don't have to load everything when you first hit the page! Optional features can be optionally used, even at the consumer level. Plus, if you do something hamhanded with the `set` command, you can reload broken modules and make them good-as-new.
 

@@ -7,6 +7,16 @@
     position: relative;
     overflow-y: scroll;
 }
+.broco-console.fullscreen {
+    position: absolute;
+    z-index: 9001;
+    height: 100%;
+
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
 
 .broco-entries {
     white-space: pre-wrap;
