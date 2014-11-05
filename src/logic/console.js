@@ -1,5 +1,9 @@
 define(['broco/logic/lex'], function(lex) {
 
+    var INITIAL_DEPS = [
+        'set', 'get', 'clear'
+    ];
+
     // Handles actual interactions with modules
     function BrocoConsole() {
         this.modules = {};
@@ -7,7 +11,7 @@ define(['broco/logic/lex'], function(lex) {
             'modules': this.modules,
             'prefs': {}
         };
-        this.depend('broco/modules/', ['set', 'get']);
+        this.depend('broco/modules/', INITIAL_DEPS);
     }
     BrocoConsole.prototype.depend = function(root, modules, callback, on_error) {
         var self = this,
